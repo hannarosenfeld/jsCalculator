@@ -25,7 +25,7 @@ $(document).ready(function() {
                 }
             } else if ($(this).hasClass('decimal')) {
                 let lastChar = workingOperation.slice(-1);
-                if (lastChar === '.') {
+                if (lastChar === '.' || workingOperation.split(' ').indexOf('.') !== -1) {
                     workingOperation += ''
                 } else {
                     workingOperation += $(this).text()
