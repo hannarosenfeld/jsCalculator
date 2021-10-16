@@ -20,8 +20,10 @@ $(document).ready(function() {
                     workingOperation += '0'
                 }
             } else if ($(this).hasClass('decimal')) {
-                let lastChar = workingOperation.slice(-1);
-                if (lastChar === '.' || workingOperation.split(' ').indexOf('.') !== -1) {
+                let lastChar = workingOperation.slice(-1)
+                let workingArray = workingOperation.split(' ')
+                let lastWord = workingArray[workingArray.length -1]
+                if (lastChar === '.' || lastWord.indexOf('.') !== -1) {
                     workingOperation += ''
                 } else {
                     workingOperation += $(this).text()
