@@ -12,9 +12,17 @@ $(document).ready(function() {
                 display.innerHTML = result
                 //console.log(result)
             } else if ($(this).hasClass('number')) {
-                console.log('number')
-                workingOperation += $(this).text()
-                display.innerHTML = workingOperation
+                if ($(this).text() !== '0') {
+                    console.log('number')
+                    workingOperation += $(this).text()
+                    display.innerHTML = workingOperation
+
+                }
+                else if (workingOperation.slice(-1) === '0'){
+                    workingOperation += ''
+                } else {
+                    workingOperation += '0'
+                }
             } else if ($(this).hasClass('decimal')) {
                 let lastChar = workingOperation.slice(-1);
                 if (lastChar === '.') {
