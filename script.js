@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if (lastChar === '+' || lastChar === '*' || lastChar === '/') {
                     workingOperation += ''
                 } else {
-                    workingOperation += $(this).text()
+                    workingOperation += ' ' + $(this).text() + ' '
                 }
             }
             secondaryDisplay.innerHTML = workingOperation
