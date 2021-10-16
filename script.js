@@ -15,7 +15,15 @@ $(document).ready(function() {
                 console.log('number')
                 workingOperation += $(this).text()
                 display.innerHTML = workingOperation
-            } else if ($(this).hasClass('operand')) {
+            } else if ($(this).hasClass('decimal')) {
+                let lastChar = workingOperation.slice(-1);
+                if (lastChar === '.') {
+                    workingOperation += ''
+                } else {
+                    workingOperation += $(this).text()
+                }
+            }
+            else if ($(this).hasClass('operand')) {
                 let lastChar = workingOperation.slice(-2);
                 if (lastChar === '+ ' || lastChar === '* ' || lastChar === '/ ') {
                     workingOperation += ''
