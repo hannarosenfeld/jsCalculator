@@ -13,13 +13,14 @@ $(document).ready(function() {
                 //console.log(result)
             } else if ($(this).hasClass('number')) {
                 console.log('number')
-                workingOperation += $(this).text()
+                workingOperation += ' ' + $(this).text()
+                display.innerHTML = workingOperation
             } else if ($(this).hasClass('operand')) {
                 let lastChar = workingOperation.slice(-1);
                 if (lastChar === '+' || lastChar === '*' || lastChar === '/') {
                     workingOperation += ''
                 } else {
-                    workingOperation += ' ' + $(this).text() + ' '
+                    workingOperation += ' ' + $(this).text()
                 }
             }
             secondaryDisplay.innerHTML = workingOperation
