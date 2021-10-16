@@ -1,22 +1,18 @@
 $(document).ready(function() {
+    let result = ''
     let workingOperation = ''
+    
     $('button').click(
         function(){
-            display.innerHTML = $(this).text()
-
             if ($(this).text()  === 'AC') {
                 return clear()
             } else if ($(this).text() === '=') {
-                console.log(workingOperation)
                 let result = (eval(workingOperation))
-                display.innerHTML = result
+                workingOperation = result
                 //console.log(result)
             } else if ($(this).hasClass('number')) {
                 if ($(this).text() !== '0') {
-                    console.log('number')
                     workingOperation += $(this).text()
-                    display.innerHTML = workingOperation
-
                 }
                 else if (workingOperation.slice(-1) === '0'){
                     workingOperation += ''
@@ -32,14 +28,15 @@ $(document).ready(function() {
                 }
             }
             else if ($(this).hasClass('operand')) {
-                let lastChar = workingOperation.slice(-2);
-                if (lastChar === '+ ' || lastChar === '* ' || lastChar === '/ ') {
+                let twoLastChars = workingOperation.toString().slice(-2)
+                if (twoLastChars === '+ ' || twoLastChars === '* ' || twoLastChars === '/ ') {
                     workingOperation += ''
                 } else {
                     workingOperation += ' ' + $(this).text() + ' '
                 }
             }
-            secondaryDisplay.innerHTML = workingOperation
+            display.innerHTML = workingOperation
+
         }
     )
 
