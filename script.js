@@ -31,12 +31,22 @@ $(document).ready(function() {
             }
             else if ($(this).hasClass('operand')) {
                 let twoLastChars = workingOperation.toString().slice(-2)
-                if (twoLastChars === '+ ' || twoLastChars === '* ' || twoLastChars === '/ ') {
-                    workingOperation += ''
-                } else {
-                    workingOperation += ' ' + $(this).text() + ' '
+                let lastFour = workingOperation.toString().slice(-5)
+                if (lastFour === '*  - ') {
+                    workingOperation = workingOperation.slice(0, -5)
+                    workingOperation += $(this).text()
                 }
-            }
+                else if ($(this).text() !== '-') {
+                    if (twoLastChars === '+ ' || twoLastChars === '* ' || twoLastChars === '/ ' || twoLastChars === '- ') {
+                        workingOperation += ''
+                    } else {
+                        workingOperation += ' ' + $(this).text() + ' '
+                    }
+                } 
+                else {
+                    workingOperation += ' ' + '-' + ' '
+                }
+            } 
             display.innerHTML = workingOperation
 
         }
