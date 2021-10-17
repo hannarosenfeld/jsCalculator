@@ -55,8 +55,5 @@ $(document).ready(function() {
     function clear() {
         display.innerHTML = 0
         workingOperation = ''
-        secondaryDisplay.innerHTML = workingOperation
-
     }
-
 })
